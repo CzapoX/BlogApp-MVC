@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogApp", "BlogApp\BlogApp.csproj", "{691C1292-C4EB-47BA-ADD4-5FD8707E0C4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLibrary", "DataAccessLibrary\DataAccessLibrary.csproj", "{AD7634BF-0F9E-4953-807A-FD7A0EBAFC47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{691C1292-C4EB-47BA-ADD4-5FD8707E0C4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{691C1292-C4EB-47BA-ADD4-5FD8707E0C4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{691C1292-C4EB-47BA-ADD4-5FD8707E0C4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{691C1292-C4EB-47BA-ADD4-5FD8707E0C4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD7634BF-0F9E-4953-807A-FD7A0EBAFC47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD7634BF-0F9E-4953-807A-FD7A0EBAFC47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD7634BF-0F9E-4953-807A-FD7A0EBAFC47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD7634BF-0F9E-4953-807A-FD7A0EBAFC47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9F546AE-9558-44B1-B843-218989CAC63A}
+	EndGlobalSection
+EndGlobal
