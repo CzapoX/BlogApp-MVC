@@ -1,10 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
+using DataAccessLibrary.Repository.PostRepository;
+using DataAccessLibrary.Repository.UserRepository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +24,9 @@ namespace BlogApp
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddScoped<IPostRepo, PostRepo>();
+            services.AddScoped<IUserRepo, UserRepo>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

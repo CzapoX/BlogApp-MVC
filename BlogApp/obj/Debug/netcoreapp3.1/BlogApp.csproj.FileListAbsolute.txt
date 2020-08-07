@@ -149,9 +149,6 @@ C:\Users\CzapoX\source\repos\BlogApp\BlogApp\bin\Debug\netcoreapp3.1\runtimes\wi
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\bin\Debug\netcoreapp3.1\BlogApp.StaticWebAssets.xml
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\BlogApp.csproj.CoreCompileInputs.cache
-C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\BlogApp.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\BlogApp.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
@@ -171,3 +168,9 @@ C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\Razor\Areas
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_StatusMessage.cshtml.g.cs
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\_StatusMessage.cshtml.g.cs
+C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\AddPost.cshtml.g.cs
+C:\Users\CzapoX\source\repos\BlogApp\BlogApp\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\CzapoX\source\repos\BlogApp\BlogApp\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\BlogApp.csproj.CoreCompileInputs.cache
+C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\BlogApp.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\BlogApp.MvcApplicationPartsAssemblyInfo.cache
