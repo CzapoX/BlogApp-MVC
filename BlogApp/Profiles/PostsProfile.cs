@@ -9,6 +9,7 @@ namespace BlogApp.Profiles
         public PostsProfile()
         {
             CreateMap<AddPostViewModel, Post>();
+            CreateMap<Post, ReadPostViewModel>();
         }
         
     }

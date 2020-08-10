@@ -5,11 +5,10 @@ using BlogApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using DataAccessLibrary.Models;
 using AutoMapper;
-using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using DataAccessLibrary.Repository.PostRepository;
 using DataAccessLibrary.Repository.UserRepository;
-using System;
+using System.Collections.Generic;
 
 namespace BlogApp.Controllers
 {
@@ -31,7 +30,13 @@ namespace BlogApp.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var posts = _postRepository.GetAll();
+            foreach (var post in posts)
+            {
+                post.Author = _userRepository.GetById(post.AuthorId);
+            }
+            var model = _mapper.Map<IEnumerable<ReadPostViewModel>>(posts);
+            return View(model);
         }
 
         [Authorize]
@@ -46,7 +51,7 @@ namespace BlogApp.Controllers
         {
             var postModel = _mapper.Map<Post>(model);
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            postModel.Author = _userRepository.Get(userId);
+            postModel.Author = _userRepository.GetById(userId);
             _postRepository.CreatePost(postModel);
             _postRepository.SaveChanges();
 

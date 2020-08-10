@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataAccessLibrary.Models
 {
@@ -13,6 +11,9 @@ namespace DataAccessLibrary.Models
         [MaxLength(128)]
         public string Content { get; set; }
 
+        public string AuthorId { get; set; }
+
+        [ForeignKey("AuthorId")]
         public BlogAppUser Author { get; set; }
     }
 }

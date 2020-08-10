@@ -1,6 +1,8 @@
 ﻿using DataAccessLibrary.DataAccess;
 using DataAccessLibrary.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DataAccessLibrary.Repository.PostRepository
 {
@@ -12,6 +14,7 @@ namespace DataAccessLibrary.Repository.PostRepository
             _context = context;
         }
 
+
         public void CreatePost(Post post)
         {
             if (post == null)
@@ -20,6 +23,11 @@ namespace DataAccessLibrary.Repository.PostRepository
             }
 
             _context.Add(post);
+        }
+
+        public IEnumerable<Post> GetAll()
+        {
+            return _context.Set<Post>().ToList();
         }
 
         public void SaveChanges()

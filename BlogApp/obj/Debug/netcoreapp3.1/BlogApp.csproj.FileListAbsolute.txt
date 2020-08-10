@@ -10,7 +10,6 @@ C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\BlogApp.Ass
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\BlogApp.TagHelpers.input.cache
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\BlogApp.TagHelpers.output.cache
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\BlogApp.RazorCoreGenerate.cache
-C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -174,3 +173,4 @@ C:\Users\CzapoX\source\repos\BlogApp\BlogApp\bin\Debug\netcoreapp3.1\AutoMapper.
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\BlogApp.csproj.CoreCompileInputs.cache
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\BlogApp.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\BlogApp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
