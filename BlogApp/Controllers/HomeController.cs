@@ -46,6 +46,7 @@ namespace BlogApp.Controllers
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult AddPost(AddPostViewModel model)
         {
@@ -55,7 +56,9 @@ namespace BlogApp.Controllers
             _postRepository.CreatePost(postModel);
             _postRepository.SaveChanges();
 
-            return View("Index", model);
+            ViewBag.ActionDone = "Post został dodany";
+
+            return base.View();
         }
 
 
