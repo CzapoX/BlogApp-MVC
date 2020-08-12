@@ -11,6 +11,10 @@ namespace DataAccessLibrary.Models
         [MaxLength(128)]
         public string Content { get; set; }
 
+        [Required]
+        [MaxLength(12)]
+        public string Title { get; set; }
+
         public string AuthorId { get; set; }
 
         [ForeignKey("AuthorId")]

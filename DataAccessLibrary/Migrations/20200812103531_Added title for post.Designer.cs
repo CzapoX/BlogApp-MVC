@@ -4,14 +4,16 @@ using DataAccessLibrary.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccessLibrary.Migrations
 {
     [DbContext(typeof(BlogAppContext))]
-    partial class BlogAppContextModelSnapshot : ModelSnapshot
+    [Migration("20200812103531_Added title for post")]
+    partial class Addedtitleforpost
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -13,7 +13,7 @@
             <div class="card bg-light mb-3" style="max-width: 18rem;">
                 <div class="card-header">@Html.DisplayFor(modelItem => item.Author.UserName)</div>
                 <div class="card-body">
-                    <h5 class="card-title">Title</h5>
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
                     <p class="card-text">@Html.DisplayFor(modelItem => item.Content)</p>
                 </div>
             </div>
