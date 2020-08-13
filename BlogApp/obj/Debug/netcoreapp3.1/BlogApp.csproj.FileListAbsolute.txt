@@ -174,3 +174,4 @@ C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\BlogApp.csp
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\BlogApp.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\BlogApp.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\CzapoX\source\repos\BlogApp\BlogApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\MyPosts.cshtml.g.cs

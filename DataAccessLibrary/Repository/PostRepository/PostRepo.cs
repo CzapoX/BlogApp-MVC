@@ -30,6 +30,12 @@ namespace DataAccessLibrary.Repository.PostRepository
             return _context.Set<Post>().ToList();
         }
 
+        public IEnumerable<Post> GetAllByUserId(string Id)
+        {
+            var model = _context.Posts.Where(r => Id.Contains(r.AuthorId));
+            return model.ToList();
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();

@@ -10,6 +10,7 @@ namespace BlogApp.Profiles
         {
             CreateMap<AddPostViewModel, Post>();
             CreateMap<Post, ReadPostViewModel>();
+            CreateMap<Post, MyPostViewModel>();
         }
         
     }

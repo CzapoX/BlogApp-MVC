@@ -9,6 +9,7 @@ using System.Security.Claims;
 using DataAccessLibrary.Repository.PostRepository;
 using DataAccessLibrary.Repository.UserRepository;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BlogApp.Controllers
 {
@@ -61,6 +62,25 @@ namespace BlogApp.Controllers
             return base.View();
         }
 
+        [Authorize]
+        [HttpGet]
+        public IActionResult MyPosts()
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var myPosts = _postRepository.GetAllByUserId(userId);
+
+            var model = _mapper.Map<IEnumerable<MyPostViewModel>>(myPosts);
+
+            return View(model);
+        }
+        [Authorize]
+        [HttpGet, ActionName("Delete")]
+        public IActionResult MyPosts(int Id)
+        {
+
+
+            return View("MyPosts");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
