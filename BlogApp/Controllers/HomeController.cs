@@ -70,8 +70,32 @@ namespace BlogApp.Controllers
             return View(model);
         }
 
-        [HttpGet, ActionName("Delete")]
-        public ActionResult MyPosts(int Id)
+        [Authorize]
+        [HttpGet]
+        public ActionResult Edit(int Id)
+        {
+            var post = _postRepository.GetById(Id);
+            var model = _mapper.Map<EditPostViewModel>(post);
+
+            return View("EditMyPost", model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Edit(EditPostViewModel editedPost)
+        {
+            var model = _mapper.Map<Post>(editedPost);
+
+            _postRepository.Update(model);
+
+
+            var myPosts = GetMyPosts();
+            return View("MyPosts", myPosts);
+        }
+
+
+        [Authorize]
+        public ActionResult Delete(int Id)
         {
            _postRepository.DeleteById(Id);
             

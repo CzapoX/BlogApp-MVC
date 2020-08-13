@@ -1,5 +1,6 @@
 ﻿using DataAccessLibrary.DataAccess;
 using DataAccessLibrary.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,9 +27,9 @@ namespace DataAccessLibrary.Repository.PostRepository
             _context.SaveChanges();
         }
 
-        public void DeleteById(int Id)
+        public void DeleteById(int id)
         {
-            var post = _context.Posts.FirstOrDefault(p => p.Id == Id);
+            var post = _context.Posts.FirstOrDefault(p => p.Id == id);
             _context.Posts.Remove(post);
             _context.SaveChanges();
         }
@@ -45,10 +46,23 @@ namespace DataAccessLibrary.Repository.PostRepository
             return _context.Set<Post>().ToList();
         }
 
-        public IEnumerable<Post> GetAllByUserId(string Id)
+        public IEnumerable<Post> GetAllByUserId(string id)
         {
-            var model = _context.Posts.Where(r => Id.Contains(r.AuthorId));
+            var model = _context.Posts.Where(r => id.Contains(r.AuthorId));
             return model.ToList();
+        }
+
+        public Post GetById(int id)
+        {
+            return _context.Set<Post>().Find(id);
+        }
+
+        public void Update(Post model)
+        {
+            _context.Entry(model).State = EntityState.Modified;
+            _context.Attach(model);
+
+            _context.SaveChanges();
         }
     }
 }

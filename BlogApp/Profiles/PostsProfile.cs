@@ -11,6 +11,8 @@ namespace BlogApp.Profiles
             CreateMap<AddPostViewModel, Post>();
             CreateMap<Post, ReadPostViewModel>();
             CreateMap<Post, MyPostViewModel>();
+            CreateMap<Post, EditPostViewModel>();
+            CreateMap<EditPostViewModel, Post>();
         }
         
     }
