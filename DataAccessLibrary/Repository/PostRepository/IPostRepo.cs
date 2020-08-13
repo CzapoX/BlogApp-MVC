@@ -6,7 +6,7 @@ namespace DataAccessLibrary.Repository.PostRepository
     public interface IPostRepo
     {
         public void CreatePost(Post post);
-        public IEnumerable<Post> GetAll();
+        public IEnumerable<Post> GetAllDescending();
         public IEnumerable<Post> GetAllByUserId(string id);
         public Post GetById(int id);
         public void DeleteById(int id);

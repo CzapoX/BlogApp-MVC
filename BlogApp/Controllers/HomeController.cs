@@ -31,7 +31,7 @@ namespace BlogApp.Controllers
 
         public IActionResult Index()
         {
-            var posts = _postRepository.GetAll();
+            var posts = _postRepository.GetAllDescending();
             foreach (var post in posts)
             {
                 post.Author = _userRepository.GetById(post.AuthorId);

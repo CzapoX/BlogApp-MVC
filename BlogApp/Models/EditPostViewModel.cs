@@ -15,7 +15,7 @@ namespace BlogApp.Models
 
         [DisplayName("Zawartość wpisu")]
         [MinLength(6, ErrorMessage = "Minimalna liczba znaków wynosi 6")]
-        [MaxLength(100, ErrorMessage = "Post przekracza maksymalną liczbę znaków")]
+        [MaxLength(200, ErrorMessage = "Post przekracza maksymalną liczbę znaków")]
         public string Content { get; set; }
     }
 }

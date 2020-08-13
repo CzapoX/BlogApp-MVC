@@ -41,9 +41,9 @@ namespace DataAccessLibrary.Repository.PostRepository
             _context.SaveChanges();
         }
 
-        public IEnumerable<Post> GetAll()
+        public IEnumerable<Post> GetAllDescending()
         {
-            return _context.Set<Post>().ToList();
+            return _context.Set<Post>().OrderByDescending(p => p.Id).ToList();
         }
 
         public IEnumerable<Post> GetAllByUserId(string id)
