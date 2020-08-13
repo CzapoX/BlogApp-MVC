@@ -8,11 +8,11 @@ namespace DataAccessLibrary.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        [MaxLength(128)]
+        [MaxLength(200)]
         public string Content { get; set; }
 
         [Required]
-        [MaxLength(12)]
+        [MaxLength(16)]
         public string Title { get; set; }
 
         public string AuthorId { get; set; }
