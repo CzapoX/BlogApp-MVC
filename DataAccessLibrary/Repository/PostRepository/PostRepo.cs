@@ -59,8 +59,9 @@ namespace DataAccessLibrary.Repository.PostRepository
 
         public void Update(Post model)
         {
-            _context.Entry(model).State = EntityState.Modified;
-            _context.Attach(model);
+            var entity = GetById(model.Id);
+
+            _context.Entry(entity).CurrentValues.SetValues(model);
 
             _context.SaveChanges();
         }

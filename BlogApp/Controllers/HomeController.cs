@@ -86,6 +86,8 @@ namespace BlogApp.Controllers
         {
             var model = _mapper.Map<Post>(editedPost);
 
+            model.AuthorId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
             _postRepository.Update(model);
 
 
