@@ -1,4 +1,4 @@
-# BlogApp-MVC
+# SocialBlogApp-MVC
 
 Aplikacja stworzona przy użyciu:
 - .NET Core
