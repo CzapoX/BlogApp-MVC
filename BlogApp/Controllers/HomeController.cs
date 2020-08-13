@@ -55,7 +55,6 @@ namespace BlogApp.Controllers
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             postModel.Author = _userRepository.GetById(userId);
             _postRepository.CreatePost(postModel);
-            _postRepository.SaveChanges();
 
             ViewBag.ActionDone = "Post został dodany";
 
@@ -75,7 +74,6 @@ namespace BlogApp.Controllers
         public ActionResult MyPosts(int Id)
         {
            _postRepository.DeleteById(Id);
-            _postRepository.SaveChanges();
             
             var model = GetMyPosts();
 

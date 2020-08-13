@@ -1,7 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading.Tasks;
 using DataAccessLibrary.Models;
+using DataAccessLibrary.Repository.PostRepository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -14,15 +16,18 @@ namespace BlogApp.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<BlogAppUser> _userManager;
         private readonly SignInManager<BlogAppUser> _signInManager;
         private readonly ILogger<DeletePersonalDataModel> _logger;
+        private readonly IPostRepo _postRepo;
 
         public DeletePersonalDataModel(
             UserManager<BlogAppUser> userManager,
             SignInManager<BlogAppUser> signInManager,
-            ILogger<DeletePersonalDataModel> logger)
+            ILogger<DeletePersonalDataModel> logger,
+            IPostRepo postRepo)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            _postRepo = postRepo;
         }
 
         [BindProperty]
@@ -42,7 +47,7 @@ namespace BlogApp.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Nie można znaleźć użytkownika z ID '{_userManager.GetUserId(User)}'.");
             }
 
             RequirePassword = await _userManager.HasPasswordAsync(user);
@@ -54,7 +59,7 @@ namespace BlogApp.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Nie można znaleźć użytkownika z ID '{_userManager.GetUserId(User)}'.");
             }
 
             RequirePassword = await _userManager.HasPasswordAsync(user);
@@ -62,21 +67,24 @@ namespace BlogApp.Areas.Identity.Pages.Account.Manage
             {
                 if (!await _userManager.CheckPasswordAsync(user, Input.Password))
                 {
-                    ModelState.AddModelError(string.Empty, "Incorrect password.");
+                    ModelState.AddModelError(string.Empty, "Błędne hasło.");
                     return Page();
                 }
             }
-
-            var result = await _userManager.DeleteAsync(user);
+            
             var userId = await _userManager.GetUserIdAsync(user);
+            var myPosts = _postRepo.GetAllByUserId(userId).ToList();
+            _postRepo.DeleteFromList(myPosts);
+            var result = await _userManager.DeleteAsync(user);
+
             if (!result.Succeeded)
             {
-                throw new InvalidOperationException($"Unexpected error occurred deleting user with ID '{userId}'.");
+                throw new InvalidOperationException($"Nastąpił niespodziewany błąd podczas usuwania użytkownika z ID '{userId}'.");
             }
 
             await _signInManager.SignOutAsync();
 
-            _logger.LogInformation("User with ID '{UserId}' deleted themselves.", userId);
+            _logger.LogInformation("Użytkownik z ID '{UserId}' został usunięty.", userId);
 
             return Redirect("~/");
         }

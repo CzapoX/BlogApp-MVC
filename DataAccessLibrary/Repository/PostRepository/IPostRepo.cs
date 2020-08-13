@@ -9,6 +9,6 @@ namespace DataAccessLibrary.Repository.PostRepository
         public IEnumerable<Post> GetAll();
         public IEnumerable<Post> GetAllByUserId(string Id);
         public void DeleteById(int Id);
-        public void SaveChanges();
+        public void DeleteFromList(ICollection<Post> posts);
     }
 }

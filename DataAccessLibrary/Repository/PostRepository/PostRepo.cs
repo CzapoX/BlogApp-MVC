@@ -23,12 +23,21 @@ namespace DataAccessLibrary.Repository.PostRepository
             }
 
             _context.Add(post);
+            _context.SaveChanges();
         }
 
         public void DeleteById(int Id)
         {
             var post = _context.Posts.FirstOrDefault(p => p.Id == Id);
             _context.Posts.Remove(post);
+            _context.SaveChanges();
+        }
+
+        public void DeleteFromList(ICollection<Post> posts)
+        {
+            foreach (var post in posts)
+                _context.Posts.Remove(post);
+            _context.SaveChanges();
         }
 
         public IEnumerable<Post> GetAll()
@@ -41,11 +50,5 @@ namespace DataAccessLibrary.Repository.PostRepository
             var model = _context.Posts.Where(r => Id.Contains(r.AuthorId));
             return model.ToList();
         }
-
-        public void SaveChanges()
-        {
-            _context.SaveChanges();
-        }
-
     }
 }
