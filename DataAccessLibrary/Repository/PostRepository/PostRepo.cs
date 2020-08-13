@@ -25,6 +25,12 @@ namespace DataAccessLibrary.Repository.PostRepository
             _context.Add(post);
         }
 
+        public void DeleteById(int Id)
+        {
+            var post = _context.Posts.FirstOrDefault(p => p.Id == Id);
+            _context.Posts.Remove(post);
+        }
+
         public IEnumerable<Post> GetAll()
         {
             return _context.Set<Post>().ToList();

@@ -66,21 +66,32 @@ namespace BlogApp.Controllers
         [HttpGet]
         public IActionResult MyPosts()
         {
+            var model = GetMyPosts();
+
+            return View(model);
+        }
+
+        [HttpGet, ActionName("Delete")]
+        public ActionResult MyPosts(int Id)
+        {
+           _postRepository.DeleteById(Id);
+            _postRepository.SaveChanges();
+            
+            var model = GetMyPosts();
+
+            return View("MyPosts", model);
+        }
+        
+        private IEnumerable<MyPostViewModel> GetMyPosts()
+        {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var myPosts = _postRepository.GetAllByUserId(userId);
 
             var model = _mapper.Map<IEnumerable<MyPostViewModel>>(myPosts);
-
-            return View(model);
+            return model;
         }
-        [Authorize]
-        [HttpGet, ActionName("Delete")]
-        public IActionResult MyPosts(int Id)
-        {
 
 
-            return View("MyPosts");
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
