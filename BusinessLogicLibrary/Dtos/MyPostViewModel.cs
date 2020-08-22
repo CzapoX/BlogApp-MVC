@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace BlogApp.Models
+namespace BusinessLogicLibrary.Dtos
 {
     public class MyPostViewModel
     {

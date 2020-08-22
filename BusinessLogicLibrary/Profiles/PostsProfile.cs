@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using BlogApp.Models;
+using BusinessLogicLibrary.Dtos;
 using DataAccessLibrary.Models;
 
-namespace BlogApp.Profiles
+namespace BusinessLogicLibrary.Profiles
 {
     public class PostsProfile : Profile
     {
@@ -14,6 +14,6 @@ namespace BlogApp.Profiles
             CreateMap<Post, EditPostViewModel>();
             CreateMap<EditPostViewModel, Post>();
         }
-        
+
     }
 }

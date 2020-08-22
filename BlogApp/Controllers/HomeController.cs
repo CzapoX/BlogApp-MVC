@@ -1,43 +1,30 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using BlogApp.Models;
 using Microsoft.AspNetCore.Authorization;
-using DataAccessLibrary.Models;
-using AutoMapper;
 using System.Security.Claims;
-using DataAccessLibrary.Repository.PostRepository;
-using DataAccessLibrary.Repository.UserRepository;
-using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
+using BlogApp.Models;
+using BusinessLogicLibrary.PostBLL;
+using BusinessLogicLibrary.Dtos;
 
 namespace BlogApp.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IPostRepo _postRepository;
-        public readonly IMapper _mapper;
-        private readonly IUserRepo _userRepository;
+        private readonly IPostBLL _postBll;
 
-        public HomeController(ILogger<HomeController> logger, IPostRepo postRepository, IMapper mapper, IUserRepo userRepository)
+        public HomeController(ILogger<HomeController> logger,IPostBLL postBll)
         {
             _logger = logger;
-            _postRepository = postRepository;
-            _mapper = mapper;
-            _userRepository = userRepository;
-            
+            _postBll = postBll;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var posts = _postRepository.GetAllDescending();
-            foreach (var post in posts)
-            {
-                post.Author = _userRepository.GetById(post.AuthorId);
-            }
-            var model = _mapper.Map<IEnumerable<ReadPostViewModel>>(posts);
-            return View(model);
+            var posts = await _postBll.GetPostsDescendingAsync();
+            return View(posts);
         }
 
         [Authorize]
@@ -49,14 +36,14 @@ namespace BlogApp.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult AddPost(AddPostViewModel model)
+        public async Task<IActionResult> AddPost(AddPostViewModel model)
         {
-            var postModel = _mapper.Map<Post>(model);
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            postModel.Author = _userRepository.GetById(userId);
-            _postRepository.CreatePost(postModel);
 
-            ViewBag.ActionDone = "Post został dodany";
+            var success = await _postBll.AddPostAsync(model, userId);
+
+            if(success)
+                ViewBag.ActionDone = "Post został dodany";
 
             return base.View();
         }
@@ -65,55 +52,45 @@ namespace BlogApp.Controllers
         [HttpGet]
         public IActionResult MyPosts()
         {
-            var model = GetMyPosts();
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            var model = _postBll.GetUserPosts(userId);
 
             return View(model);
         }
 
         [Authorize]
         [HttpGet]
-        public ActionResult Edit(int Id)
+        public async Task<ActionResult> Edit(int id)
         {
-            var post = _postRepository.GetById(Id);
-            var model = _mapper.Map<EditPostViewModel>(post);
+            var model = await _postBll.GetByIdAsync(id);
 
             return View("EditMyPost", model);
         }
 
         [Authorize]
-        [HttpPost]
-        public ActionResult Edit(EditPostViewModel editedPost)
+        public async Task<ActionResult> Edit(EditPostViewModel editedPost)
         {
-            var model = _mapper.Map<Post>(editedPost);
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var success = await _postBll.EditPostAsync(editedPost, userId);
 
-            model.AuthorId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var myPosts = _postBll.GetUserPosts(userId);
 
-            _postRepository.Update(model);
-
-
-            var myPosts = GetMyPosts();
             return View("MyPosts", myPosts);
         }
 
 
         [Authorize]
-        public ActionResult Delete(int Id)
+        public async Task<ActionResult> Delete(int id)
         {
-           _postRepository.DeleteById(Id);
-            
-            var model = GetMyPosts();
+            var success = await _postBll.DeletePostAsync(id);
+
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var model = _postBll.GetUserPosts(userId);
 
             return View("MyPosts", model);
         }
         
-        private IEnumerable<MyPostViewModel> GetMyPosts()
-        {
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var myPosts = _postRepository.GetAllByUserId(userId);
-
-            var model = _mapper.Map<IEnumerable<MyPostViewModel>>(myPosts);
-            return model;
-        }
 
 
 

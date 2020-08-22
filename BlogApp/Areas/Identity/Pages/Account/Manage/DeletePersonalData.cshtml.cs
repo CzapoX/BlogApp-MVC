@@ -1,9 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Threading.Tasks;
+using BusinessLogicLibrary.PostBLL;
 using DataAccessLibrary.Models;
-using DataAccessLibrary.Repository.PostRepository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -16,18 +15,18 @@ namespace BlogApp.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<BlogAppUser> _userManager;
         private readonly SignInManager<BlogAppUser> _signInManager;
         private readonly ILogger<DeletePersonalDataModel> _logger;
-        private readonly IPostRepo _postRepo;
+        private readonly IPostBLL _postBLL;
 
         public DeletePersonalDataModel(
             UserManager<BlogAppUser> userManager,
             SignInManager<BlogAppUser> signInManager,
             ILogger<DeletePersonalDataModel> logger,
-            IPostRepo postRepo)
+            IPostBLL postBLL)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
-            _postRepo = postRepo;
+            _postBLL = postBLL;
         }
 
         [BindProperty]
@@ -73,8 +72,7 @@ namespace BlogApp.Areas.Identity.Pages.Account.Manage
             }
             
             var userId = await _userManager.GetUserIdAsync(user);
-            var myPosts = _postRepo.GetAllByUserId(userId).ToList();
-            _postRepo.DeleteFromList(myPosts);
+            _postBLL.DeleteUserPosts(userId);
             var result = await _userManager.DeleteAsync(user);
 
             if (!result.Succeeded)

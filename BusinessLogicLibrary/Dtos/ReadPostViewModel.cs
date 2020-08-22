@@ -1,7 +1,7 @@
 ﻿using DataAccessLibrary.Models;
 using System.ComponentModel;
 
-namespace BlogApp.Models
+namespace BusinessLogicLibrary.Dtos
 {
     public class ReadPostViewModel
     {

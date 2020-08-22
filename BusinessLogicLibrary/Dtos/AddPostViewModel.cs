@@ -1,9 +1,8 @@
-﻿using DataAccessLibrary.Models;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace BlogApp.Models
+namespace BusinessLogicLibrary.Dtos
 {
     public partial class AddPostViewModel
     {

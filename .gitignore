@@ -1,0 +1,6 @@
+/.vs
+bin
+obj
+.vscode
+.DS_Store
+appsettings.json

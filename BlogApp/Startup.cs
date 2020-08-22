@@ -1,7 +1,6 @@
 using System;
 using AutoMapper;
-using DataAccessLibrary.Repository.PostRepository;
-using DataAccessLibrary.Repository.UserRepository;
+using BusinessLogicLibrary.PostBLL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,8 +23,7 @@ namespace BlogApp
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
-            services.AddScoped<IPostRepo, PostRepo>();
-            services.AddScoped<IUserRepo, UserRepo>();
+            services.AddScoped<IPostBLL, PostBLL>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
