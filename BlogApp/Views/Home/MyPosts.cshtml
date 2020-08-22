@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MyPostViewModel>
+﻿@model IEnumerable<BusinessLogicLibrary.Dtos.MyPostViewModel>
 
 @{
     ViewData["Title"] = "Moje wpisy";
@@ -6,6 +6,9 @@
 }
 
 <h1>Moje wpisy</h1>
+
+<h5 class="alert-success">@ViewBag.UpdateSuccess</h5>
+<h5 class="alert-danger">@ViewBag.UpdateFail</h5>
 
 
 <table class="table">
@@ -21,7 +24,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)

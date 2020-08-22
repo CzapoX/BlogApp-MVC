@@ -70,13 +70,15 @@ namespace BusinessLogicLibrary.PostBLL
             model.AuthorId = authorId;
 
             var entity = await _context.Posts.FindAsync(model.Id);
+
             _context.Entry(entity).CurrentValues.SetValues(model);
 
             var success = await _context.SaveChangesAsync() > 0;
 
             if (success)
                 return true;
-            throw new Exception("Problem saving changes");
+
+            return false;
         }
 
         public async Task<bool> DeletePostAsync(int id)

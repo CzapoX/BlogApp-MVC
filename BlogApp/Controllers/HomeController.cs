@@ -74,6 +74,12 @@ namespace BlogApp.Controllers
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var success = await _postBll.EditPostAsync(editedPost, userId);
 
+            if(success)
+                ViewBag.UpdateSuccess = "Post został edytowany";
+
+            if (!success)
+                ViewBag.UpdateFail = "Post nie został edytowany";
+
             var myPosts = _postBll.GetUserPosts(userId);
 
             return View("MyPosts", myPosts);
