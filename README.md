@@ -1,15 +1,11 @@
 # SocialBlogApp-MVC
 
-Aplikacja stworzona przy użyciu:
-- .NET Core
-- Entity Framework
-- MS SQL
-- AutoMapper
-- ASP.NET Core Identity
+## General info
+The application displays posts added by users. After registration and logging in, the user is able to add new posts as well as edit and delete previously created posts. He also has the ability to edit and delete his account.
 
-Aplikacja wyświetla posty dodane przez użytkowników platformy. Po rejestracji i zalogowaniu, użytkownik jest w stanie dodawać nowe posty oraz edytować i usuwać poprzednio stworzone przez siebie posty. Posiadana on również możliwość edytowania oraz usunięcia swojego konta. 
-
-![ss](index.png)
-![s1](MyPosts.png)
-![s2](Edit.png)
-![s3](AccountSettings.png)
+## Technologies
+* .NET Core 3.1
+* Entity Framework Core
+* MS SQL
+* AutoMapper
+* ASP.NET Core Identity
